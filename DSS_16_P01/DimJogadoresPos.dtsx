@@ -1,0 +1,2642 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/29/2024 10:18:08 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-17FIPGFE"
+  DTS:CreatorName="LAPTOP-17FIPGFE\Anjo"
+  DTS:DTSID="{0855D484-D7BF-410C-8DF3-F61EB7B8A7A8}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="2070"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{01AB4FDC-F745-4898-856D-AF63EC39825B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DimJogadoresPos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{EA443F2E-BA95-4DDC-A2AB-74E70F8C8D18}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DimJogadoresPos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DimJogadoresPos\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DimJogadoresPos\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Derived Column.Inputs[Derived Column Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[ID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DimJogadoresPos\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[jogadorCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[jogadorCode]"
+                      name="jogadorCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[ID]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[keyStartDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[keyStartDate]"
+                      name="keyStartDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[keyEndDate]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[keyEndDate]"
+                      name="keyEndDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">NULL(DT_DATE)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">NULL(DT_DATE)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[lastUpdateTime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[lastUpdateTime]"
+                      name="lastUpdateTime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DimJogadoresPos\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogadoresPos\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DimJogadoresPos\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogadoresPos\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DimJogadoresPos\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Derived Column 1.Outputs[Derived Column Output].Columns[keyEndDate]"
+                      dataType="dbTimeStamp"
+                      description="keyEndDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DimJogadoresPos\Derived Column 1.Outputs[Derived Column Output].Columns[keyEndDate]"
+                      name="keyEndDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresPos\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DimJogadoresPos\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogadoresPos\Derived Column 2"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 2"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DimJogadoresPos\Derived Column 2.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogadoresPos\Derived Column 2.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DimJogadoresPos\Derived Column 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Derived Column 2.Outputs[Derived Column Output].Columns[keyStartDate]"
+                      dataType="dbTimeStamp"
+                      description="keyStartDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DimJogadoresPos\Derived Column 2.Outputs[Derived Column Output].Columns[keyStartDate]"
+                      name="keyStartDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresPos\Derived Column 2.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DimJogadoresPos\Derived Column 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogadoresPos\DsaJogadores"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="DsaJogadores"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Jogadores]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogadoresPos\DsaJogadores.Connections[OleDbConnection]"
+                  connectionManagerID="{924C3E52-7799-40E9-8FD1-38C396DF1CD6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDSA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[Nome]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[Nome]"
+                      length="50"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[Nome]"
+                      name="Nome"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[Epoca]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[Epoca]"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[Epoca]"
+                      name="Epoca"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataNasc]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[DataNasc]"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataNasc]"
+                      name="DataNasc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[MaiorValor]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[MaiorValor]"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[MaiorValor]"
+                      name="MaiorValor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[ValorAtual]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[ValorAtual]"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[ValorAtual]"
+                      name="ValorAtual"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataContrato]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[DataContrato]"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataContrato]"
+                      name="DataContrato"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[PosicaoJogadorID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[PosicaoJogadorID]"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[PosicaoJogadorID]"
+                      name="PosicaoJogadorID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[Nome]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nome" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[Epoca]"
+                      dataType="i4"
+                      name="Epoca" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[PaisID]"
+                      dataType="i4"
+                      name="PaisID" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[DataNasc]"
+                      dataType="dbTimeStamp"
+                      name="DataNasc" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[MaiorValor]"
+                      dataType="i4"
+                      name="MaiorValor" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[ValorAtual]"
+                      dataType="i4"
+                      name="ValorAtual" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[DataContrato]"
+                      dataType="dbTimeStamp"
+                      name="DataContrato" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[PosicaoJogadorID]"
+                      dataType="i4"
+                      name="PosicaoJogadorID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[Nome]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[Nome]"
+                      name="Nome" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[Epoca]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[Epoca]"
+                      name="Epoca" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[DataNasc]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[DataNasc]"
+                      name="DataNasc" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[MaiorValor]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[MaiorValor]"
+                      name="MaiorValor" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[ValorAtual]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[ValorAtual]"
+                      name="ValorAtual" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[DataContrato]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[DataContrato]"
+                      name="DataContrato" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[PosicaoJogadorID]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[PosicaoJogadorID]"
+                      name="PosicaoJogadorID" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogadoresPos\Inserir Destino"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Inserir Destino"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dim_jogadoresPosicao]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogadoresPos\Inserir Destino.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].Columns[jogadorCode]"
+                      cachedDataType="i4"
+                      cachedName="jogadorCode"
+                      externalMetadataColumnId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[jogadorCode]"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[jogadorCode]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].Columns[Nome]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nome"
+                      externalMetadataColumnId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[Nome]"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[Nome]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].Columns[Epoca]"
+                      cachedDataType="i4"
+                      cachedName="Epoca"
+                      externalMetadataColumnId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[Epoca]"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[Epoca]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].Columns[DataNasc]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DataNasc"
+                      externalMetadataColumnId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[DataNasc]"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[DataNasc]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].Columns[MaiorValor]"
+                      cachedDataType="i4"
+                      cachedName="MaiorValor"
+                      externalMetadataColumnId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[MaiorValor]"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[MaiorValor]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].Columns[ValorAtual]"
+                      cachedDataType="i4"
+                      cachedName="ValorAtual"
+                      externalMetadataColumnId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[ValorAtual]"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[ValorAtual]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].Columns[DataContrato]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DataContrato"
+                      externalMetadataColumnId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[DataContrato]"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[DataContrato]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].Columns[Descr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Descr"
+                      externalMetadataColumnId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[DescrPosicao]"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[Descr]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].Columns[keyStartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="keyStartDate"
+                      externalMetadataColumnId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[keyStartDate]"
+                      lineageId="Package\DimJogadoresPos\Derived Column 2.Outputs[Derived Column Output].Columns[keyStartDate]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].Columns[lastUpdateTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="lastUpdateTime"
+                      externalMetadataColumnId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[lastUpdateTime]"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[lastUpdateTime]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[jogadorKey]"
+                      dataType="i4"
+                      name="jogadorKey" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[jogadorCode]"
+                      dataType="i4"
+                      name="jogadorCode" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[Nome]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nome" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[Epoca]"
+                      dataType="i4"
+                      name="Epoca" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[DataNasc]"
+                      dataType="dbTimeStamp"
+                      name="DataNasc" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[MaiorValor]"
+                      dataType="i4"
+                      name="MaiorValor" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[ValorAtual]"
+                      dataType="i4"
+                      name="ValorAtual" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[DataContrato]"
+                      dataType="dbTimeStamp"
+                      name="DataContrato" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[DescrPosicao]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DescrPosicao" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[keyStartDate]"
+                      dataType="dbTimeStamp"
+                      name="keyStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[keyEndDate]"
+                      dataType="dbTimeStamp"
+                      name="keyEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input].ExternalColumns[lastUpdateTime]"
+                      dataType="dbTimeStamp"
+                      name="lastUpdateTime" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogadoresPos\Inserir Destino.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\Inserir Destino.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Inserir Destino.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\Inserir Destino.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogadoresPos\LookupDimJogadoresPos"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookupDimJogadoresPos"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_jogadoresPosicao]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_jogadoresPosicao]) [refTable]
+where [refTable].[jogadorCode] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="jogadorKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="jogadorCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Nome" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Epoca" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DataNasc" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MaiorValor" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ValorAtual" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DataContrato" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="keyStartDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="keyEndDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DescrPosicao" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[ID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogadoresPos\LookupDimJogadoresPos.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimJogadoresPos\LookupDimJogadoresPos.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\LookupDimJogadoresPos.Inputs[Lookup Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">jogadorCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogadoresPos\LookupDimJogadoresPos.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DimJogadoresPos\LookupDimJogadoresPos.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresPos\LookupDimJogadoresPos.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DimJogadoresPos\LookupDimJogadoresPos.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresPos\LookupDimJogadoresPos.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DimJogadoresPos\LookupDimJogadoresPos.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\LookupDimJogadoresPos.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\LookupDimJogadoresPos.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\LookupDimJogadoresPos.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\LookupDimJogadoresPos.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogadoresPos\LookupPosicao"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookupPosicao"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[PosicoesJogador]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[PosicoesJogador]) [refTable]
+where [refTable].[ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Descr" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[PosicaoJogadorID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogadoresPos\LookupPosicao.Connections[OleDbConnection]"
+                  connectionManagerID="{924C3E52-7799-40E9-8FD1-38C396DF1CD6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDSA]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimJogadoresPos\LookupPosicao.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\LookupPosicao.Inputs[Lookup Input].Columns[PosicaoJogadorID]"
+                      cachedDataType="i4"
+                      cachedName="PosicaoJogadorID"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[PosicaoJogadorID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogadoresPos\LookupPosicao.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DimJogadoresPos\LookupPosicao.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\LookupPosicao.Outputs[Lookup Match Output].Columns[Descr]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="30"
+                      lineageId="Package\DimJogadoresPos\LookupPosicao.Outputs[Lookup Match Output].Columns[Descr]"
+                      name="Descr"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Descr</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresPos\LookupPosicao.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DimJogadoresPos\LookupPosicao.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresPos\LookupPosicao.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DimJogadoresPos\LookupPosicao.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\LookupPosicao.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\LookupPosicao.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\LookupPosicao.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\LookupPosicao.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogadoresPos\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[dim_jogadoresPosicao] SET [keyEndDate] = ? WHERE [jogadorCode] = ? AND [keyEndDate] IS NULL</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogadoresPos\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimJogadoresPos\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command.Inputs[OLE DB Command Input].Columns[jogadorCode]"
+                      cachedDataType="i4"
+                      cachedName="jogadorCode"
+                      externalMetadataColumnId="Package\DimJogadoresPos\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[jogadorCode]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command.Inputs[OLE DB Command Input].Columns[keyEndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="keyEndDate"
+                      externalMetadataColumnId="Package\DimJogadoresPos\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DimJogadoresPos\Derived Column 1.Outputs[Derived Column Output].Columns[keyEndDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbTimeStamp"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogadoresPos\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DimJogadoresPos\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresPos\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DimJogadoresPos\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogadoresPos\OLE DB Command 1"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command 1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[dim_jogadoresPosicao] SET [DataContrato] = ?,[DataNasc] = ?,[DescrPosicao] = ?,[Epoca] = ?,[lastUpdateTime] = ?,[MaiorValor] = ?,[Nome] = ?,[ValorAtual] = ? WHERE [jogadorCode] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogadoresPos\OLE DB Command 1.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[DataContrato]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DataContrato"
+                      externalMetadataColumnId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataContrato]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[DataNasc]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DataNasc"
+                      externalMetadataColumnId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataNasc]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Descr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Descr"
+                      externalMetadataColumnId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\DimJogadoresPos\LookupPosicao.Outputs[Lookup Match Output].Columns[Descr]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Epoca]"
+                      cachedDataType="i4"
+                      cachedName="Epoca"
+                      externalMetadataColumnId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[Epoca]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[jogadorCode]"
+                      cachedDataType="i4"
+                      cachedName="jogadorCode"
+                      externalMetadataColumnId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[jogadorCode]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[lastUpdateTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="lastUpdateTime"
+                      externalMetadataColumnId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[lastUpdateTime]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[MaiorValor]"
+                      cachedDataType="i4"
+                      cachedName="MaiorValor"
+                      externalMetadataColumnId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[MaiorValor]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Nome]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nome"
+                      externalMetadataColumnId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[Nome]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[ValorAtual]"
+                      cachedDataType="i4"
+                      cachedName="ValorAtual"
+                      externalMetadataColumnId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[ValorAtual]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbTimeStamp"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="dbTimeStamp"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="dbTimeStamp"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="i4"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      dataType="i4"
+                      name="Param_7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      dataType="i4"
+                      name="Param_8">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogadoresPos\OLE DB Command 1.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresPos\OLE DB Command 1.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogadoresPos\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [DescrPosicao], [jogadorCode],[keyStartDate],[keyEndDate] FROM [dbo].[dim_jogadoresPosicao]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere">[keyStartDate] IS NOT NULL AND [keyEndDate] IS NULL</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogadoresPos\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimJogadoresPos\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Descr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Descr"
+                      externalMetadataColumnId="Package\DimJogadoresPos\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[DescrPosicao]"
+                      lineageId="Package\DimJogadoresPos\LookupPosicao.Outputs[Lookup Match Output].Columns[Descr]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[jogadorCode]"
+                      cachedDataType="i4"
+                      cachedName="jogadorCode"
+                      externalMetadataColumnId="Package\DimJogadoresPos\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[jogadorCode]"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[jogadorCode]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[DescrPosicao]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DescrPosicao" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[jogadorCode]"
+                      dataType="i4"
+                      name="jogadorCode" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[keyStartDate]"
+                      dataType="dbTimeStamp"
+                      name="keyStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresPos\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[keyEndDate]"
+                      dataType="dbTimeStamp"
+                      name="keyEndDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogadoresPos\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\DimJogadoresPos\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresPos\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\DimJogadoresPos\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresPos\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\DimJogadoresPos\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresPos\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\DimJogadoresPos\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresPos\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\DimJogadoresPos\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresPos\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\DimJogadoresPos\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogadoresPos\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 1].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 1].Columns[Nome]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nome"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[Nome]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[Nome]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 1].Columns[Epoca]"
+                      cachedDataType="i4"
+                      cachedName="Epoca"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[Epoca]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[Epoca]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 1].Columns[DataNasc]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DataNasc"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataNasc]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[DataNasc]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 1].Columns[MaiorValor]"
+                      cachedDataType="i4"
+                      cachedName="MaiorValor"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[MaiorValor]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[MaiorValor]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 1].Columns[ValorAtual]"
+                      cachedDataType="i4"
+                      cachedName="ValorAtual"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[ValorAtual]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[ValorAtual]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 1].Columns[DataContrato]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DataContrato"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataContrato]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[DataContrato]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 1].Columns[PosicaoJogadorID]"
+                      cachedDataType="i4"
+                      cachedName="PosicaoJogadorID"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[PosicaoJogadorID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[PosicaoJogadorID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 1].Columns[Descr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Descr"
+                      lineageId="Package\DimJogadoresPos\LookupPosicao.Outputs[Lookup Match Output].Columns[Descr]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[Descr]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 1].Columns[jogadorCode]"
+                      cachedDataType="i4"
+                      cachedName="jogadorCode"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[jogadorCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[jogadorCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 1].Columns[keyStartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="keyStartDate"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[keyStartDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[keyStartDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 1].Columns[keyEndDate]"
+                      cachedDataType="date"
+                      cachedName="keyEndDate"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[keyEndDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[keyEndDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 1].Columns[lastUpdateTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="lastUpdateTime"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[lastUpdateTime]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[lastUpdateTime]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 2].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 2].Columns[Nome]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nome"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[Nome]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[Nome]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 2].Columns[Epoca]"
+                      cachedDataType="i4"
+                      cachedName="Epoca"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[Epoca]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[Epoca]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 2].Columns[DataNasc]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DataNasc"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataNasc]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[DataNasc]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 2].Columns[MaiorValor]"
+                      cachedDataType="i4"
+                      cachedName="MaiorValor"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[MaiorValor]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[MaiorValor]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 2].Columns[ValorAtual]"
+                      cachedDataType="i4"
+                      cachedName="ValorAtual"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[ValorAtual]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[ValorAtual]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 2].Columns[DataContrato]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DataContrato"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataContrato]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[DataContrato]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 2].Columns[PosicaoJogadorID]"
+                      cachedDataType="i4"
+                      cachedName="PosicaoJogadorID"
+                      lineageId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output].Columns[PosicaoJogadorID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[PosicaoJogadorID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 2].Columns[Descr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Descr"
+                      lineageId="Package\DimJogadoresPos\LookupPosicao.Outputs[Lookup Match Output].Columns[Descr]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[Descr]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 2].Columns[jogadorCode]"
+                      cachedDataType="i4"
+                      cachedName="jogadorCode"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[jogadorCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[jogadorCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 2].Columns[keyStartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="keyStartDate"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[keyStartDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[keyStartDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 2].Columns[keyEndDate]"
+                      cachedDataType="date"
+                      cachedName="keyEndDate"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[keyEndDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[keyEndDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 2].Columns[lastUpdateTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="lastUpdateTime"
+                      lineageId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output].Columns[lastUpdateTime]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[lastUpdateTime]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[ID]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[Nome]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[Nome]"
+                      name="Nome" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[Epoca]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[Epoca]"
+                      name="Epoca" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[DataNasc]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[DataNasc]"
+                      name="DataNasc" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[MaiorValor]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[MaiorValor]"
+                      name="MaiorValor" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[ValorAtual]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[ValorAtual]"
+                      name="ValorAtual" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[DataContrato]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[DataContrato]"
+                      name="DataContrato" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[PosicaoJogadorID]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[PosicaoJogadorID]"
+                      name="PosicaoJogadorID" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[Descr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[Descr]"
+                      name="Descr" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[jogadorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[jogadorCode]"
+                      name="jogadorCode" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[keyStartDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[keyStartDate]"
+                      name="keyStartDate" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[keyEndDate]"
+                      dataType="date"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[keyEndDate]"
+                      name="keyEndDate" />
+                    <outputColumn
+                      refId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[lastUpdateTime]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1].Columns[lastUpdateTime]"
+                      name="lastUpdateTime" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DimJogadoresPos.Paths[Derived Column Output]"
+              endId="Package\DimJogadoresPos\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="Derived Column Output"
+              startId="Package\DimJogadoresPos\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DimJogadoresPos.Paths[Derived Column Output1]"
+              endId="Package\DimJogadoresPos\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\DimJogadoresPos\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DimJogadoresPos.Paths[Derived Column Output2]"
+              endId="Package\DimJogadoresPos\Inserir Destino.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DimJogadoresPos\Derived Column 2.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DimJogadoresPos.Paths[Historical Attribute Inserts Output]"
+              endId="Package\DimJogadoresPos\Derived Column 1.Inputs[Derived Column Input]"
+              name="Historical Attribute Inserts Output"
+              startId="Package\DimJogadoresPos\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]" />
+            <path
+              refId="Package\DimJogadoresPos.Paths[Inferred Member Updates Output]"
+              endId="Package\DimJogadoresPos\OLE DB Command 1.Inputs[OLE DB Command Input]"
+              name="Inferred Member Updates Output"
+              startId="Package\DimJogadoresPos\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]" />
+            <path
+              refId="Package\DimJogadoresPos.Paths[Lookup Match Output]"
+              endId="Package\DimJogadoresPos\LookupDimJogadoresPos.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DimJogadoresPos\LookupPosicao.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DimJogadoresPos.Paths[Lookup Match Output1]"
+              endId="Package\DimJogadoresPos\Derived Column.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\DimJogadoresPos\LookupDimJogadoresPos.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DimJogadoresPos.Paths[New Output]"
+              endId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 1]"
+              name="New Output"
+              startId="Package\DimJogadoresPos\Slowly Changing Dimension.Outputs[New Output]" />
+            <path
+              refId="Package\DimJogadoresPos.Paths[OLE DB Command Output]"
+              endId="Package\DimJogadoresPos\Union All.Inputs[Union All Input 2]"
+              name="OLE DB Command Output"
+              startId="Package\DimJogadoresPos\OLE DB Command.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\DimJogadoresPos.Paths[OLE DB Source Output]"
+              endId="Package\DimJogadoresPos\LookupPosicao.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\DimJogadoresPos\DsaJogadores.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DimJogadoresPos.Paths[Union All Output 1]"
+              endId="Package\DimJogadoresPos\Derived Column 2.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\DimJogadoresPos\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="166.666666666667,42.6666666666667"
+          Id="Package\DimJogadoresPos"
+          TopLeft="241.874989187345,73.8947360307557" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DimJogadoresPos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="153.333333333334,42.6666666666667"
+          Id="Package\DimJogadoresPos\LookupPosicao"
+          TopLeft="160.166666666667,108.166666666666" />
+        <NodeLayout
+          Size="201.333333333334,42.6666666666667"
+          Id="Package\DimJogadoresPos\LookupDimJogadoresPos"
+          TopLeft="136.166666666667,210.833333333333" />
+        <NodeLayout
+          Size="148,42.6666666666667"
+          Id="Package\DimJogadoresPos\DsaJogadores"
+          TopLeft="162.833333333333,5.49999999999993" />
+        <EdgeLayout
+          Id="Package\DimJogadoresPos.Paths[OLE DB Source Output]"
+          TopLeft="236.833333333333,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimJogadoresPos.Paths[Lookup Match Output]"
+          TopLeft="236.833333333333,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999998"
+              Start="0,0"
+              End="0,52.4999999999998">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999998" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453124999999,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="212,42.6666666666667"
+          Id="Package\DimJogadoresPos\Slowly Changing Dimension"
+          TopLeft="130.833333333333,416.166666666666" />
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\DimJogadoresPos\Derived Column"
+          TopLeft="158.833333333333,313.499999999999" />
+        <EdgeLayout
+          Id="Package\DimJogadoresPos.Paths[Derived Column Output]"
+          TopLeft="236.833333333333,356.166666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999998"
+              Start="0,0"
+              End="0,52.4999999999998">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999998" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimJogadoresPos.Paths[Lookup Match Output1]"
+          TopLeft="236.833333333333,253.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453124999999,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\DimJogadoresPos\Derived Column 1"
+          TopLeft="10.1666666666667,518.833333333333" />
+        <EdgeLayout
+          Id="Package\DimJogadoresPos.Paths[Historical Attribute Inserts Output]"
+          TopLeft="185.833333333333,458.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-93,59.9999999999999"
+              Start="0,0"
+              End="-93,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4968944099379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4968944099379"
+                    Point2="0,20.4968944099379"
+                    Point3="-4,20.4968944099379" />
+                  <mssgle:LineSegment
+                    End="-89,20.4968944099379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-89,20.4968944099379"
+                    Point2="-93,20.4968944099379"
+                    Point3="-93,24.4968944099379" />
+                  <mssgle:LineSegment
+                    End="-93,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-121.55638671875,25.4968944099379,150.1127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.666666666667,42.6666666666667"
+          Id="Package\DimJogadoresPos\OLE DB Command"
+          TopLeft="5.50000000000004,621.499999999999" />
+        <EdgeLayout
+          Id="Package\DimJogadoresPos.Paths[Derived Column Output1]"
+          TopLeft="91.8333333333334,561.499999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="122.666666666667,42.6666666666667"
+          Id="Package\DimJogadoresPos\Union All"
+          TopLeft="175.5,724.166666666666" />
+        <EdgeLayout
+          Id="Package\DimJogadoresPos.Paths[New Output]"
+          TopLeft="236.833333333333,458.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.1111111111111,265.333333333333"
+              Start="0,0"
+              End="19.1111111111111,257.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,153.150214592275" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,153.150214592275"
+                    Point2="0,157.150214592275"
+                    Point3="4,157.150214592275" />
+                  <mssgle:LineSegment
+                    End="15.1111111111111,157.150214592275" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.1111111111111,157.150214592275"
+                    Point2="19.1111111111111,157.150214592275"
+                    Point3="19.1111111111111,161.150214592275" />
+                  <mssgle:LineSegment
+                    End="19.1111111111111,257.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.5358311631944,162.150214592275,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimJogadoresPos.Paths[OLE DB Command Output]"
+          TopLeft="90.8333333333334,664.166666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="126.888888888889,60.0000000000001"
+              Start="0,0"
+              End="126.888888888889,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5364806866953" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5364806866953"
+                    Point2="0,35.5364806866953"
+                    Point3="4,35.5364806866953" />
+                  <mssgle:LineSegment
+                    End="122.888888888889,35.5364806866953" />
+                  <mssgle:CubicBezierSegment
+                    Point1="122.888888888889,35.5364806866953"
+                    Point2="126.888888888889,35.5364806866953"
+                    Point3="126.888888888889,39.5364806866953" />
+                  <mssgle:LineSegment
+                    End="126.888888888889,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\DimJogadoresPos\Derived Column 2"
+          TopLeft="154.166666666667,826.833333333333" />
+        <EdgeLayout
+          Id="Package\DimJogadoresPos.Paths[Union All Output 1]"
+          TopLeft="236.833333333333,766.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="148,42.6666666666667"
+          Id="Package\DimJogadoresPos\Inserir Destino"
+          TopLeft="162.833333333333,929.5" />
+        <EdgeLayout
+          Id="Package\DimJogadoresPos.Paths[Derived Column Output2]"
+          TopLeft="236.833333333333,869.499999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="180,42.6666666666667"
+          Id="Package\DimJogadoresPos\OLE DB Command 1"
+          TopLeft="297.833333333333,518.833333333333" />
+        <EdgeLayout
+          Id="Package\DimJogadoresPos.Paths[Inferred Member Updates Output]"
+          TopLeft="287.833333333333,458.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="100,59.9999999999999"
+              Start="0,0"
+              End="100,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4968944099379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4968944099379"
+                    Point2="0,20.4968944099379"
+                    Point3="4,20.4968944099379" />
+                  <mssgle:LineSegment
+                    End="96,20.4968944099379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="96,20.4968944099379"
+                    Point2="100,20.4968944099379"
+                    Point3="100,24.4968944099379" />
+                  <mssgle:LineSegment
+                    End="100,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-24.40298828125,25.4968944099379,148.8059765625,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimJogadoresPos\LookupPosicao">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[PosicoesJogador]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimJogadoresPos\DsaJogadores">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimJogadoresPos\LookupDimJogadoresPos">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_jogadoresPosicao]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimJogadoresPos\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionID&gt;{91118077-B772-4219-A651-4D4C3537F586}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[dim_jogadoresPosicao]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DsaJogadores.Outputs[OLE DB Source Output].Columns[DataContrato]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;DataContrato&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DsaJogadores.Outputs[OLE DB Source Output].Columns[DataNasc]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;DataNasc&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;LookupPosicao.Outputs[Lookup Match Output].Columns[Descr]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;DescrPosicao&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DsaJogadores.Outputs[OLE DB Source Output].Columns[Epoca]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Epoca&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Derived Column.Outputs[Derived Column Output].Columns[jogadorCode]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;jogadorCode&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Derived Column.Outputs[Derived Column Output].Columns[lastUpdateTime]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;lastUpdateTime&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DsaJogadores.Outputs[OLE DB Source Output].Columns[MaiorValor]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;MaiorValor&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DsaJogadores.Outputs[OLE DB Source Output].Columns[Nome]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Nome&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DsaJogadores.Outputs[OLE DB Source Output].Columns[ValorAtual]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;ValorAtual&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Union All&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 2&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Inserir Destino&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 1&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;true&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn&gt;keyStartDate&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;keyEndDate&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
+  &lt;EnableInferredSupport&gt;true&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

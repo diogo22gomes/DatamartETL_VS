@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDSA"
+  DTS:DTSID="{924C3E52-7799-40E9-8FD1-38C396DF1CD6}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=LAPTOP-17FIPGFE\MSSQLSERVER01;Initial Catalog=TransfermarktDSA;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-DSS_16_P01-{924C3E52-7799-40E9-8FD1-38C396DF1CD6}LAPTOP-17FIPGFE\MSSQLSERVER01.TransfermarktDSA;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

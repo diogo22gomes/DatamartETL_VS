@@ -1,0 +1,2192 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/13/2024 4:18:49 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-17FIPGFE"
+  DTS:CreatorName="LAPTOP-17FIPGFE\Anjo"
+  DTS:DTSID="{8B8C0015-597E-4EFF-A0BA-C334F1F765D6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="2070"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{D5F338B1-8204-43CD-8FB1-3454002FCB92}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FctFichasJogo"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{DB0DD2C5-325D-4BB1-A20C-D8FA726B177F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FctFichasJogo"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\FctFichasJogo\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\FctFichasJogo\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FctFichasJogo\Derived Column.Inputs[Derived Column Input].Columns[DataJogo]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DataJogo"
+                      lineageId="Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup Match Output].Columns[DataJogo]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FctFichasJogo\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\FctFichasJogo\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\Derived Column.Outputs[Derived Column Output].Columns[ConvertedJogoDate]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FctFichasJogo\Derived Column.Outputs[Derived Column Output].Columns[ConvertedJogoDate]"
+                      name="ConvertedJogoDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)[REPLACE]((DT_WSTR,10)(DT_DBDATE)#{Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup Match Output].Columns[DataJogo]},"-","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)REPLACE((DT_WSTR,10)(DT_DBDATE)DataJogo,"-","")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FctFichasJogo\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\FctFichasJogo\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FctFichasJogo\DsaFichasJogo"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="DsaFichasJogo"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FichasJogo]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FctFichasJogo\DsaFichasJogo.Connections[OleDbConnection]"
+                  connectionManagerID="{924C3E52-7799-40E9-8FD1-38C396DF1CD6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDSA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogoID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].ExternalColumns[JogoID]"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogoID]"
+                      name="JogoID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogadorID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].ExternalColumns[JogadorID]"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogadorID]"
+                      name="JogadorID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[Amarelos]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].ExternalColumns[Amarelos]"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[Amarelos]"
+                      name="Amarelos"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[Vermelho]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].ExternalColumns[Vermelho]"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[Vermelho]"
+                      name="Vermelho"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[Golos]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].ExternalColumns[Golos]"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[Golos]"
+                      name="Golos"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[Assistencias]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].ExternalColumns[Assistencias]"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[Assistencias]"
+                      name="Assistencias"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[Minutos]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].ExternalColumns[Minutos]"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[Minutos]"
+                      name="Minutos"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].ExternalColumns[JogoID]"
+                      dataType="i4"
+                      name="JogoID" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].ExternalColumns[JogadorID]"
+                      dataType="i4"
+                      name="JogadorID" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].ExternalColumns[Amarelos]"
+                      dataType="i4"
+                      name="Amarelos" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].ExternalColumns[Vermelho]"
+                      dataType="bool"
+                      name="Vermelho" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].ExternalColumns[Golos]"
+                      dataType="i4"
+                      name="Golos" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].ExternalColumns[Assistencias]"
+                      dataType="i4"
+                      name="Assistencias" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].ExternalColumns[Minutos]"
+                      dataType="i4"
+                      name="Minutos" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[JogoID]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[JogoID]"
+                      name="JogoID" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[JogadorID]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[JogadorID]"
+                      name="JogadorID" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[Amarelos]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[Amarelos]"
+                      name="Amarelos" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[Vermelho]"
+                      dataType="bool"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[Vermelho]"
+                      name="Vermelho" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[Golos]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[Golos]"
+                      name="Golos" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[Assistencias]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[Assistencias]"
+                      name="Assistencias" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[Minutos]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[Minutos]"
+                      name="Minutos" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="InsertNewRowsFctFichasJogo"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[fact_fichasJogo]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].Columns[JogoID]"
+                      cachedDataType="i4"
+                      cachedName="JogoID"
+                      externalMetadataColumnId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[JogoID]"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogoID]" />
+                    <inputColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].Columns[JogadorID]"
+                      cachedDataType="i4"
+                      cachedName="JogadorID"
+                      externalMetadataColumnId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[JogadorID]"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogadorID]" />
+                    <inputColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].Columns[Amarelos]"
+                      cachedDataType="i4"
+                      cachedName="Amarelos"
+                      externalMetadataColumnId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[Amarelos]"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[Amarelos]" />
+                    <inputColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].Columns[Vermelho]"
+                      cachedDataType="bool"
+                      cachedName="Vermelho"
+                      externalMetadataColumnId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[Vermelho]"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[Vermelho]" />
+                    <inputColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].Columns[Golos]"
+                      cachedDataType="i4"
+                      cachedName="Golos"
+                      externalMetadataColumnId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[Golos]"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[Golos]" />
+                    <inputColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].Columns[Assistencias]"
+                      cachedDataType="i4"
+                      cachedName="Assistencias"
+                      externalMetadataColumnId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[Assistencias]"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[Assistencias]" />
+                    <inputColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].Columns[Minutos]"
+                      cachedDataType="i4"
+                      cachedName="Minutos"
+                      externalMetadataColumnId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[Minutos]"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[Minutos]" />
+                    <inputColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].Columns[jogoArbTreiKey]"
+                      cachedDataType="i4"
+                      cachedName="jogoArbTreiKey"
+                      externalMetadataColumnId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[jogoArbTreiKey]"
+                      lineageId="Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup Match Output].Columns[jogoArbTreiKey]" />
+                    <inputColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].Columns[jogadorKey]"
+                      cachedDataType="i4"
+                      cachedName="jogadorKey"
+                      externalMetadataColumnId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[jogadorPosKey]"
+                      lineageId="Package\FctFichasJogo\LookupDimJogadorPos.Outputs[Lookup Match Output].Columns[jogadorKey]" />
+                    <inputColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].Columns[jogadorKey1]"
+                      cachedDataType="i4"
+                      cachedName="jogadorKey"
+                      externalMetadataColumnId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[jogadorPaisKey]"
+                      lineageId="Package\FctFichasJogo\LookupDimJogadorPais.Outputs[Lookup Match Output].Columns[jogadorKey]" />
+                    <inputColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].Columns[jogadorKey2]"
+                      cachedDataType="i4"
+                      cachedName="jogadorKey"
+                      externalMetadataColumnId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[jogadorAvalKey]"
+                      lineageId="Package\FctFichasJogo\LookupDimJogadorAval.Outputs[Lookup Match Output].Columns[jogadorKey]" />
+                    <inputColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].Columns[dateKey]"
+                      cachedDataType="i4"
+                      cachedName="dateKey"
+                      externalMetadataColumnId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[dateKey]"
+                      lineageId="Package\FctFichasJogo\LookupDimDate.Outputs[Lookup Match Output].Columns[dateKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[JogoID]"
+                      dataType="i4"
+                      name="JogoID" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[JogadorID]"
+                      dataType="i4"
+                      name="JogadorID" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[jogadorPosKey]"
+                      dataType="i4"
+                      name="jogadorPosKey" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[jogadorPaisKey]"
+                      dataType="i4"
+                      name="jogadorPaisKey" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[jogadorAvalKey]"
+                      dataType="i4"
+                      name="jogadorAvalKey" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[dateKey]"
+                      dataType="i4"
+                      name="dateKey" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[jogoArbTreiKey]"
+                      dataType="i4"
+                      name="jogoArbTreiKey" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[Amarelos]"
+                      dataType="i4"
+                      name="Amarelos" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[Vermelho]"
+                      dataType="bool"
+                      name="Vermelho" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[Golos]"
+                      dataType="i4"
+                      name="Golos" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[Assistencias]"
+                      dataType="i4"
+                      name="Assistencias" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[Minutos]"
+                      dataType="i4"
+                      name="Minutos" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[nameBestPlayer]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="nameBestPlayer" />
+                    <externalMetadataColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input].ExternalColumns[TotalGoalByCountry]"
+                      dataType="i4"
+                      name="TotalGoalByCountry" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FctFichasJogo\LookupDimDate"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookupDimDate"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_date]) [refTable]
+where [refTable].[dateKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="dateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date" dataType="DT_STR" length="128" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="YearMonthNum" dataType="DT_STR" length="128" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Calendar_Quarter" dataType="DT_STR" length="128" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MonthNum" dataType="DT_STR" length="128" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MonthName" dataType="DT_STR" length="128" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MonthShortName" dataType="DT_STR" length="128" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WeekNum" dataType="DT_STR" length="128" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DayNumOfYear" dataType="DT_STR" length="128" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DayNumOfMonth" dataType="DT_STR" length="128" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DayNumOfWeek" dataType="DT_STR" length="128" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DayName" dataType="DT_STR" length="128" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DayShortName" dataType="DT_STR" length="128" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Quarter" dataType="DT_STR" length="128" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="YearQuarterNum" dataType="DT_STR" length="128" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DayNumOfQuarter" dataType="DT_STR" length="128" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\FctFichasJogo\Derived Column.Outputs[Derived Column Output].Columns[ConvertedJogoDate]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FctFichasJogo\LookupDimDate.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FctFichasJogo\LookupDimDate.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FctFichasJogo\LookupDimDate.Inputs[Lookup Input].Columns[ConvertedJogoDate]"
+                      cachedDataType="i4"
+                      cachedName="ConvertedJogoDate"
+                      lineageId="Package\FctFichasJogo\Derived Column.Outputs[Derived Column Output].Columns[ConvertedJogoDate]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">dateKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FctFichasJogo\LookupDimDate.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupDimDate.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupDimDate.Outputs[Lookup Match Output].Columns[dateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\FctFichasJogo\LookupDimDate.Outputs[Lookup Match Output].Columns[dateKey]"
+                      name="dateKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">dateKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FctFichasJogo\LookupDimDate.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupDimDate.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FctFichasJogo\LookupDimDate.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupDimDate.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupDimDate.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\LookupDimDate.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupDimDate.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\LookupDimDate.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FctFichasJogo\LookupDimJogadorAval"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookupDimJogadorAval"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_jogadoresAvaliacao]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_jogadoresAvaliacao]) [refTable]
+where [refTable].[jogadorCode] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="jogadorKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="jogadorCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Nome" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Epoca" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DataNasc" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MaiorValor" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ValorAtual" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DataContrato" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Valor" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DataAvaliacao" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogadorID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FctFichasJogo\LookupDimJogadorAval.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FctFichasJogo\LookupDimJogadorAval.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogadorAval.Inputs[Lookup Input].Columns[JogadorID]"
+                      cachedDataType="i4"
+                      cachedName="JogadorID"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogadorID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">jogadorCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FctFichasJogo\LookupDimJogadorAval.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupDimJogadorAval.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogadorAval.Outputs[Lookup Match Output].Columns[jogadorKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\FctFichasJogo\LookupDimJogadorAval.Outputs[Lookup Match Output].Columns[jogadorKey]"
+                      name="jogadorKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">jogadorKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FctFichasJogo\LookupDimJogadorAval.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupDimJogadorAval.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FctFichasJogo\LookupDimJogadorAval.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupDimJogadorAval.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogadorAval.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\LookupDimJogadorAval.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogadorAval.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\LookupDimJogadorAval.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FctFichasJogo\LookupDimJogadorPais"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookupDimJogadorPais"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_jogadoresPaises]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_jogadoresPaises]) [refTable]
+where [refTable].[jogadorCode] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="jogadorKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="jogadorCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Nome" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Epoca" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DataNasc" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MaiorValor" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ValorAtual" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DataContrato" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DescrPaises" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogadorID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FctFichasJogo\LookupDimJogadorPais.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FctFichasJogo\LookupDimJogadorPais.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogadorPais.Inputs[Lookup Input].Columns[JogadorID]"
+                      cachedDataType="i4"
+                      cachedName="JogadorID"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogadorID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">jogadorCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FctFichasJogo\LookupDimJogadorPais.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupDimJogadorPais.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogadorPais.Outputs[Lookup Match Output].Columns[jogadorKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\FctFichasJogo\LookupDimJogadorPais.Outputs[Lookup Match Output].Columns[jogadorKey]"
+                      name="jogadorKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">jogadorKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FctFichasJogo\LookupDimJogadorPais.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupDimJogadorPais.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FctFichasJogo\LookupDimJogadorPais.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupDimJogadorPais.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogadorPais.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\LookupDimJogadorPais.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogadorPais.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\LookupDimJogadorPais.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FctFichasJogo\LookupDimJogadorPos"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookupDimJogadorPos"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_jogadoresPosicao]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_jogadoresPosicao]) [refTable]
+where [refTable].[jogadorCode] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="jogadorKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="jogadorCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Nome" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Epoca" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DataNasc" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MaiorValor" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ValorAtual" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DataContrato" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DescrPosicao" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogadorID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FctFichasJogo\LookupDimJogadorPos.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FctFichasJogo\LookupDimJogadorPos.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogadorPos.Inputs[Lookup Input].Columns[JogadorID]"
+                      cachedDataType="i4"
+                      cachedName="JogadorID"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogadorID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">jogadorCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FctFichasJogo\LookupDimJogadorPos.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupDimJogadorPos.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogadorPos.Outputs[Lookup Match Output].Columns[jogadorKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\FctFichasJogo\LookupDimJogadorPos.Outputs[Lookup Match Output].Columns[jogadorKey]"
+                      name="jogadorKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">jogadorKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FctFichasJogo\LookupDimJogadorPos.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupDimJogadorPos.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FctFichasJogo\LookupDimJogadorPos.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupDimJogadorPos.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogadorPos.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\LookupDimJogadorPos.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogadorPos.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\LookupDimJogadorPos.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FctFichasJogo\LookupDimJogoArbTrei"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookupDimJogoArbTrei"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_JogoArbTrei]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_JogoArbTrei]) [refTable]
+where [refTable].[jogoCode] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="jogoKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="jogoCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Epoca" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Data" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NomeTreinadorCasa" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="NomeTreinadorFora" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Assistencia" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ArbitroNome" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogoID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FctFichasJogo\LookupDimJogoArbTrei.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FctFichasJogo\LookupDimJogoArbTrei.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogoArbTrei.Inputs[Lookup Input].Columns[JogoID]"
+                      cachedDataType="i4"
+                      cachedName="JogoID"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogoID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">jogoCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupDimJogoArbTrei.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup Match Output].Columns[jogoArbTreiKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup Match Output].Columns[jogoArbTreiKey]"
+                      name="jogoArbTreiKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">jogoKey</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup Match Output].Columns[DataJogo]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup Match Output].Columns[DataJogo]"
+                      name="DataJogo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Data</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupDimJogoArbTrei.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupDimJogoArbTrei.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FctFichasJogo\LookupFctFichaJogo"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookupFctFichaJogo"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[fact_fichasJogo]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[fact_fichasJogo]) [refTable]
+where [refTable].[JogoID] = ? and [refTable].[JogadorID] = ? and [refTable].[jogadorPaisKey] = ? and [refTable].[jogadorPosKey] = ? and [refTable].[jogadorAvalKey] = ? and [refTable].[jogoArbTreiKey] = ? and [refTable].[dateKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="JogoID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JogadorID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="jogadorPosKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="jogadorPaisKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="jogadorAvalKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="jogoArbTreiKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Amarelos" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Vermelho" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Golos" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Assistencias" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Minutos" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nameBestPlayer" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TotalGoalByCountry" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogoID]};#{Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogadorID]};#{Package\FctFichasJogo\LookupDimJogadorPais.Outputs[Lookup Match Output].Columns[jogadorKey]};#{Package\FctFichasJogo\LookupDimJogadorPos.Outputs[Lookup Match Output].Columns[jogadorKey]};#{Package\FctFichasJogo\LookupDimJogadorAval.Outputs[Lookup Match Output].Columns[jogadorKey]};#{Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup Match Output].Columns[jogoArbTreiKey]};#{Package\FctFichasJogo\LookupDimDate.Outputs[Lookup Match Output].Columns[dateKey]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FctFichasJogo\LookupFctFichaJogo.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FctFichasJogo\LookupFctFichaJogo.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FctFichasJogo\LookupFctFichaJogo.Inputs[Lookup Input].Columns[JogoID]"
+                      cachedDataType="i4"
+                      cachedName="JogoID"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogoID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">JogoID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\FctFichasJogo\LookupFctFichaJogo.Inputs[Lookup Input].Columns[JogadorID]"
+                      cachedDataType="i4"
+                      cachedName="JogadorID"
+                      lineageId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output].Columns[JogadorID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">JogadorID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\FctFichasJogo\LookupFctFichaJogo.Inputs[Lookup Input].Columns[jogadorKey]"
+                      cachedDataType="i4"
+                      cachedName="jogadorKey"
+                      lineageId="Package\FctFichasJogo\LookupDimJogadorPais.Outputs[Lookup Match Output].Columns[jogadorKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">jogadorPaisKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\FctFichasJogo\LookupFctFichaJogo.Inputs[Lookup Input].Columns[jogadorKey1]"
+                      cachedDataType="i4"
+                      cachedName="jogadorKey"
+                      lineageId="Package\FctFichasJogo\LookupDimJogadorPos.Outputs[Lookup Match Output].Columns[jogadorKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">jogadorPosKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\FctFichasJogo\LookupFctFichaJogo.Inputs[Lookup Input].Columns[jogadorKey2]"
+                      cachedDataType="i4"
+                      cachedName="jogadorKey"
+                      lineageId="Package\FctFichasJogo\LookupDimJogadorAval.Outputs[Lookup Match Output].Columns[jogadorKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">jogadorAvalKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\FctFichasJogo\LookupFctFichaJogo.Inputs[Lookup Input].Columns[jogoArbTreiKey]"
+                      cachedDataType="i4"
+                      cachedName="jogoArbTreiKey"
+                      lineageId="Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup Match Output].Columns[jogoArbTreiKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">jogoArbTreiKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\FctFichasJogo\LookupFctFichaJogo.Inputs[Lookup Input].Columns[dateKey]"
+                      cachedDataType="i4"
+                      cachedName="dateKey"
+                      lineageId="Package\FctFichasJogo\LookupDimDate.Outputs[Lookup Match Output].Columns[dateKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">dateKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupFctFichaJogo.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup Match Output].Columns[jogadorPosKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup Match Output].Columns[jogadorPosKey]"
+                      name="jogadorPosKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">jogadorPosKey</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup Match Output].Columns[jogadorPaisKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup Match Output].Columns[jogadorPaisKey]"
+                      name="jogadorPaisKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">jogadorPaisKey</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup Match Output].Columns[jogadorAvalKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup Match Output].Columns[jogadorAvalKey]"
+                      name="jogadorAvalKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">jogadorAvalKey</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup Match Output].Columns[jogoArbTreiKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup Match Output].Columns[jogoArbTreiKey]"
+                      name="jogoArbTreiKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">jogoArbTreiKey</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup Match Output].Columns[dateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup Match Output].Columns[dateKey]"
+                      name="dateKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">dateKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupFctFichaJogo.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\FctFichasJogo\LookupFctFichaJogo.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\FctFichasJogo.Paths[Derived Column Output]"
+              endId="Package\FctFichasJogo\LookupDimDate.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\FctFichasJogo\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\FctFichasJogo.Paths[Lookup Match Output]"
+              endId="Package\FctFichasJogo\LookupDimJogadorPos.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\FctFichasJogo\LookupDimJogadorPais.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\FctFichasJogo.Paths[Lookup Match Output1]"
+              endId="Package\FctFichasJogo\LookupDimJogadorAval.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\FctFichasJogo\LookupDimJogadorPos.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\FctFichasJogo.Paths[Lookup Match Output2]"
+              endId="Package\FctFichasJogo\LookupDimJogoArbTrei.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\FctFichasJogo\LookupDimJogadorAval.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\FctFichasJogo.Paths[Lookup Match Output3]"
+              endId="Package\FctFichasJogo\LookupFctFichaJogo.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\FctFichasJogo\LookupDimDate.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\FctFichasJogo.Paths[Lookup Match Output4]"
+              endId="Package\FctFichasJogo\Derived Column.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\FctFichasJogo\LookupDimJogoArbTrei.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\FctFichasJogo.Paths[Lookup No Match Output]"
+              endId="Package\FctFichasJogo\InsertNewRowsFctFichasJogo.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\FctFichasJogo\LookupFctFichaJogo.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\FctFichasJogo.Paths[OLE DB Source Output]"
+              endId="Package\FctFichasJogo\LookupDimJogadorPais.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\FctFichasJogo\DsaFichasJogo.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="149.333333333334,42.6666666666667"
+          Id="Package\FctFichasJogo"
+          TopLeft="261.874988293276,140.263156354675" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\FctFichasJogo">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="224,42.6666666666667"
+          Id="Package\FctFichasJogo\InsertNewRowsFctFichasJogo"
+          TopLeft="384.843732796145,352.249996752724" />
+        <NodeLayout
+          Size="193.333333333334,42.6666666666667"
+          Id="Package\FctFichasJogo\LookupDimJogadorAval"
+          TopLeft="517.343726872933,171.807017911972" />
+        <NodeLayout
+          Size="190.666666666667,42.6666666666667"
+          Id="Package\FctFichasJogo\LookupDimJogadorPos"
+          TopLeft="476.562478695997,92.0614036252158" />
+        <NodeLayout
+          Size="153.333333333334,42.6666666666667"
+          Id="Package\FctFichasJogo\DsaFichasJogo"
+          TopLeft="216.093740339857,19.6710524155946" />
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\FctFichasJogo\LookupDimDate"
+          TopLeft="430.937480735593,247.561401626891" />
+        <NodeLayout
+          Size="193.333333333334,42.6666666666667"
+          Id="Package\FctFichasJogo\LookupDimJogadorPais"
+          TopLeft="191.249991450459,105.710525155108" />
+        <NodeLayout
+          Size="192,42.6666666666667"
+          Id="Package\FctFichasJogo\LookupDimJogoArbTrei"
+          TopLeft="183.749991785735,174.236843573956" />
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\FctFichasJogo\Derived Column"
+          TopLeft="232.031239627395,249.846490294643" />
+        <NodeLayout
+          Size="178.666666666667,42.6666666666667"
+          Id="Package\FctFichasJogo\LookupFctFichaJogo"
+          TopLeft="648.749970998616,261.890350424565" />
+        <EdgeLayout
+          Id="Package\FctFichasJogo.Paths[Lookup Match Output1]"
+          TopLeft="571.89581202933,134.728070291882">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="42.1145815102698,37.07894762009"
+              Start="0,0"
+              End="42.1145815102698,29.57894762009">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.539473810045" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.539473810045"
+                    Point2="0,18.539473810045"
+                    Point3="4,18.539473810045" />
+                  <mssgle:LineSegment
+                    End="38.1145815102698,18.539473810045" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.1145815102698,18.539473810045"
+                    Point2="42.1145815102698,18.539473810045"
+                    Point3="42.1145815102698,22.539473810045" />
+                  <mssgle:LineSegment
+                    End="42.1145815102698,29.57894762009" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-27.1340959636151,23.539473810045,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FctFichasJogo.Paths[Lookup Match Output]"
+          TopLeft="384.583324783793,127.043858488442">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="91.9791539122039,-13.6491215298926"
+              Start="0,0"
+              End="84.4791539122039,-13.6491215298926">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="41.989576956102,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="41.989576956102,0"
+                    Point2="45.989576956102,0"
+                    Point3="45.989576956102,-4" />
+                  <mssgle:LineSegment
+                    End="45.989576956102,-9.6491215298926" />
+                  <mssgle:CubicBezierSegment
+                    Point1="45.989576956102,-9.6491215298926"
+                    Point2="45.989576956102,-13.6491215298926"
+                    Point3="49.989576956102,-13.6491215298926" />
+                  <mssgle:LineSegment
+                    End="84.4791539122039,-13.6491215298926" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-2.20180976264805,1,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FctFichasJogo.Paths[Derived Column Output]"
+          TopLeft="388.031239627395,270.0372792941">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="42.9062411081982,0"
+              Start="0,0"
+              End="35.4062411081982,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="35.4062411081982,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FctFichasJogo.Paths[OLE DB Source Output]"
+          TopLeft="290.338532561825,62.3377190822613">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.3728060728471"
+              Start="0,0"
+              End="0,35.8728060728471">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.8728060728471" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FctFichasJogo.Paths[Lookup No Match Output]"
+          TopLeft="738.083304331949,304.557017091232">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-241.239571535805,47.6929796614916"
+              Start="0,0"
+              End="-241.239571535805,40.1929796614916">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.8464898307458" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.8464898307458"
+                    Point2="0,23.8464898307458"
+                    Point3="-4,23.8464898307458" />
+                  <mssgle:LineSegment
+                    End="-237.239571535805,23.8464898307458" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-237.239571535805,23.8464898307458"
+                    Point2="-241.239571535805,23.8464898307458"
+                    Point3="-241.239571535805,27.8464898307458" />
+                  <mssgle:LineSegment
+                    End="-241.239571535805,40.1929796614916" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-176.426172486652,28.8464898307458,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FctFichasJogo.Paths[Lookup Match Output4]"
+          TopLeft="279.749991785735,216.903510240623">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="30.2812478416598,32.94298005402"
+              Start="0,0"
+              End="30.2812478416598,25.44298005402">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.47149002701" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.47149002701"
+                    Point2="0,16.47149002701"
+                    Point3="4,16.47149002701" />
+                  <mssgle:LineSegment
+                    End="26.2812478416598,16.47149002701" />
+                  <mssgle:CubicBezierSegment
+                    Point1="26.2812478416598,16.47149002701"
+                    Point2="30.2812478416598,16.47149002701"
+                    Point3="30.2812478416598,20.47149002701" />
+                  <mssgle:LineSegment
+                    End="30.2812478416598,25.44298005402" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-33.0507627979201,21.47149002701,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FctFichasJogo.Paths[Lookup Match Output3]"
+          TopLeft="586.937480735593,268.894734960225">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="61.8124902630228,14.3289487976739"
+              Start="0,0"
+              End="54.3124902630228,14.3289487976739">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="26.9062451315114,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="26.9062451315114,0"
+                    Point2="30.9062451315114,0"
+                    Point3="30.9062451315114,4" />
+                  <mssgle:LineSegment
+                    End="30.9062451315114,10.3289487976739" />
+                  <mssgle:CubicBezierSegment
+                    Point1="30.9062451315114,10.3289487976739"
+                    Point2="30.9062451315114,14.3289487976739"
+                    Point3="34.9062451315114,14.3289487976739" />
+                  <mssgle:LineSegment
+                    End="54.3124902630228,14.3289487976739" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.2851415872386,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FctFichasJogo.Paths[Lookup Match Output2]"
+          TopLeft="517.343726872933,194.355264076298">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-141.593735087198,0"
+              Start="0,0"
+              End="-134.093735087198,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-134.093735087198,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-115.238254262349,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\FctFichasJogo\InsertNewRowsFctFichasJogo">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FctFichasJogo\LookupDimJogadorAval">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_jogadoresAvaliacao]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FctFichasJogo\LookupDimJogadorPos">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_jogadoresPosicao]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FctFichasJogo\DsaFichasJogo">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FctFichasJogo\LookupDimDate">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_date]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FctFichasJogo\LookupDimJogadorPais">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_jogadoresPaises]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FctFichasJogo\LookupDimJogoArbTrei">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_JogoArbTrei]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FctFichasJogo\LookupFctFichaJogo">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[fact_fichasJogo]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

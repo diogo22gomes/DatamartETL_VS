@@ -1,0 +1,1626 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/12/2024 11:36:34 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-17FIPGFE"
+  DTS:CreatorName="LAPTOP-17FIPGFE\Anjo"
+  DTS:DTSID="{1C1F43E3-8451-4108-B34B-E4CD01323ECC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="2070"
+  DTS:ObjectName="DimJogoArbTrei"
+  DTS:PackageType="5"
+  DTS:VersionBuild="43"
+  DTS:VersionGUID="{0790BAF4-E34D-4BEF-B9EE-7B344440E5E5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DimJogoArbitroTreinador"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3A010BB2-36E2-474E-8BB4-9D12625D8CA1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DimJogoArbitroTreinador"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DimJogoArbitroTreinador\DsaJogo"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="DsaJogo"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Jogos]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogoArbitroTreinador\DsaJogo.Connections[OleDbConnection]"
+                  connectionManagerID="{924C3E52-7799-40E9-8FD1-38C396DF1CD6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDSA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[Epoca]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].ExternalColumns[Epoca]"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[Epoca]"
+                      name="Epoca"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[Data]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].ExternalColumns[Data]"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[Data]"
+                      name="Data"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[TreinadorCasaID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].ExternalColumns[TreinadorCasaID]"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[TreinadorCasaID]"
+                      name="TreinadorCasaID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[TreinadorForaID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].ExternalColumns[TreinadorForaID]"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[TreinadorForaID]"
+                      name="TreinadorForaID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[Assistencia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].ExternalColumns[Assistencia]"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[Assistencia]"
+                      name="Assistencia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[ArbitroID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].ExternalColumns[ArbitroID]"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[ArbitroID]"
+                      name="ArbitroID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].ExternalColumns[Epoca]"
+                      dataType="i4"
+                      name="Epoca" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].ExternalColumns[Data]"
+                      dataType="dbTimeStamp"
+                      name="Data" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].ExternalColumns[TreinadorCasaID]"
+                      dataType="i4"
+                      name="TreinadorCasaID" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].ExternalColumns[TreinadorForaID]"
+                      dataType="i4"
+                      name="TreinadorForaID" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].ExternalColumns[Assistencia]"
+                      dataType="i4"
+                      name="Assistencia" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].ExternalColumns[ArbitroID]"
+                      dataType="i4"
+                      name="ArbitroID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[Epoca]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[Epoca]"
+                      name="Epoca" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[Data]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[Data]"
+                      name="Data" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[TreinadorCasaID]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[TreinadorCasaID]"
+                      name="TreinadorCasaID" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[TreinadorForaID]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[TreinadorForaID]"
+                      name="TreinadorForaID" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[Assistencia]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[Assistencia]"
+                      name="Assistencia" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[ArbitroID]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[ArbitroID]"
+                      name="ArbitroID" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogoArbitroTreinador\LookupArbitros"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookupArbitros"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Arbitros]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Arbitros]) [refTable]
+where [refTable].[ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Nome" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[ArbitroID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogoArbitroTreinador\LookupArbitros.Connections[OleDbConnection]"
+                  connectionManagerID="{924C3E52-7799-40E9-8FD1-38C396DF1CD6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDSA]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimJogoArbitroTreinador\LookupArbitros.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogoArbitroTreinador\LookupArbitros.Inputs[Lookup Input].Columns[ArbitroID]"
+                      cachedDataType="i4"
+                      cachedName="ArbitroID"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[ArbitroID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\LookupArbitros.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DimJogoArbitroTreinador\LookupArbitros.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\LookupArbitros.Outputs[Lookup Match Output].Columns[NomeArbitro]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupArbitros.Outputs[Lookup Match Output].Columns[NomeArbitro]"
+                      name="NomeArbitro"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Nome</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\LookupArbitros.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DimJogoArbitroTreinador\LookupArbitros.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\LookupArbitros.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DimJogoArbitroTreinador\LookupArbitros.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\LookupArbitros.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupArbitros.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\LookupArbitros.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupArbitros.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookupDimJogadoresPos"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_JogoArbTrei]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_JogoArbTrei]) [refTable]
+where [refTable].[jogoCode] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="jogoKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="jogoCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Epoca" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Data" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NomeTreinadorCasa" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="NomeTreinadorFora" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Assistencia" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ArbitroNome" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[ID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos.Inputs[Lookup Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">jogoCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogoArbitroTreinador\LookupTreinadores"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookupTreinadores"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Treinadores]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Treinadores]) [refTable]
+where [refTable].[ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Nome" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[TreinadorCasaID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogoArbitroTreinador\LookupTreinadores.Connections[OleDbConnection]"
+                  connectionManagerID="{924C3E52-7799-40E9-8FD1-38C396DF1CD6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDSA]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimJogoArbitroTreinador\LookupTreinadores.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogoArbitroTreinador\LookupTreinadores.Inputs[Lookup Input].Columns[TreinadorCasaID]"
+                      cachedDataType="i4"
+                      cachedName="TreinadorCasaID"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[TreinadorCasaID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\LookupTreinadores.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DimJogoArbitroTreinador\LookupTreinadores.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\LookupTreinadores.Outputs[Lookup Match Output].Columns[Nome]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupTreinadores.Outputs[Lookup Match Output].Columns[Nome]"
+                      name="Nome"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Nome</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\LookupTreinadores.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DimJogoArbitroTreinador\LookupTreinadores.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\LookupTreinadores.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DimJogoArbitroTreinador\LookupTreinadores.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\LookupTreinadores.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupTreinadores.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\LookupTreinadores.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupTreinadores.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogoArbitroTreinador\LookupTreinadores 1"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookupTreinadores 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Treinadores]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Treinadores]) [refTable]
+where [refTable].[ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Nome" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[TreinadorForaID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Connections[OleDbConnection]"
+                  connectionManagerID="{924C3E52-7799-40E9-8FD1-38C396DF1CD6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDSA]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Inputs[Lookup Input].Columns[TreinadorForaID]"
+                      cachedDataType="i4"
+                      cachedName="TreinadorForaID"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[TreinadorForaID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Outputs[Lookup Match Output].Columns[Nome]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Outputs[Lookup Match Output].Columns[Nome]"
+                      name="Nome"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Nome</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogoArbitroTreinador\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">update dim_JogoArbTrei set NomeTreinadorCasa= ?, NomeTreinadorFora = ?, ArbitroNome = ? where jogoCode = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogoArbitroTreinador\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimJogoArbitroTreinador\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Command.Inputs[OLE DB Command Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Command.Inputs[OLE DB Command Input].Columns[Nome]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nome"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupTreinadores.Outputs[Lookup Match Output].Columns[Nome]" />
+                    <inputColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Command.Inputs[OLE DB Command Input].Columns[Nome1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nome"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Outputs[Lookup Match Output].Columns[Nome]" />
+                    <inputColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Command.Inputs[OLE DB Command Input].Columns[NomeArbitro]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NomeArbitro"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupArbitros.Outputs[Lookup Match Output].Columns[NomeArbitro]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DimJogoArbitroTreinador\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DimJogoArbitroTreinador\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogoArbitroTreinador\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dim_JogoArbTrei]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Epoca]"
+                      cachedDataType="i4"
+                      cachedName="Epoca"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Epoca]"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[Epoca]" />
+                    <inputColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[jogoCode]"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Data]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Data"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Data]"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[Data]" />
+                    <inputColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Assistencia]"
+                      cachedDataType="i4"
+                      cachedName="Assistencia"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Assistencia]"
+                      lineageId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output].Columns[Assistencia]" />
+                    <inputColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nome]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nome"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NomeTreinadorCasa]"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupTreinadores.Outputs[Lookup Match Output].Columns[Nome]" />
+                    <inputColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nome1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nome"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NomeTreinadorFora]"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Outputs[Lookup Match Output].Columns[Nome]" />
+                    <inputColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NomeArbitro]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NomeArbitro"
+                      externalMetadataColumnId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ArbitroNome]"
+                      lineageId="Package\DimJogoArbitroTreinador\LookupArbitros.Outputs[Lookup Match Output].Columns[NomeArbitro]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Epoca]"
+                      dataType="i4"
+                      name="Epoca" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[jogoKey]"
+                      dataType="i4"
+                      name="jogoKey" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[jogoCode]"
+                      dataType="i4"
+                      name="jogoCode" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Data]"
+                      dataType="dbTimeStamp"
+                      name="Data" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NomeTreinadorCasa]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NomeTreinadorCasa" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NomeTreinadorFora]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NomeTreinadorFora" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Assistencia]"
+                      dataType="i4"
+                      name="Assistencia" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ArbitroNome]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ArbitroNome" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogoArbitroTreinador\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogoArbitroTreinador\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DimJogoArbitroTreinador.Paths[Lookup Match Output]"
+              endId="Package\DimJogoArbitroTreinador\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DimJogoArbitroTreinador.Paths[Lookup Match Output1]"
+              endId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DimJogoArbitroTreinador\LookupTreinadores.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DimJogoArbitroTreinador.Paths[Lookup Match Output2]"
+              endId="Package\DimJogoArbitroTreinador\LookupArbitros.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DimJogoArbitroTreinador\LookupTreinadores 1.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DimJogoArbitroTreinador.Paths[Lookup Match Output3]"
+              endId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DimJogoArbitroTreinador\LookupArbitros.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DimJogoArbitroTreinador.Paths[Lookup No Match Output]"
+              endId="Package\DimJogoArbitroTreinador\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DimJogoArbitroTreinador.Paths[OLE DB Source Output]"
+              endId="Package\DimJogoArbitroTreinador\LookupTreinadores.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\DimJogoArbitroTreinador\DsaJogo.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="198.666666666667,42.6666666666667"
+          Id="Package\DimJogoArbitroTreinador"
+          TopLeft="235.624989466742,97.8421041888709" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DimJogoArbitroTreinador">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\DimJogoArbitroTreinador\LookupTreinadores"
+          TopLeft="194.65277175833,129.976608546065" />
+        <NodeLayout
+          Size="121.333333333334,42.6666666666667"
+          Id="Package\DimJogoArbitroTreinador\DsaJogo"
+          TopLeft="210.624993266538,60" />
+        <EdgeLayout
+          Id="Package\DimJogoArbitroTreinador.Paths[OLE DB Source Output]"
+          TopLeft="271.291659933205,102.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.36111182512496,27.3099418793986"
+              Start="0,0"
+              End="9.36111182512496,19.8099418793986">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.65497093969928" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.65497093969928"
+                    Point2="0,13.6549709396993"
+                    Point3="4,13.6549709396993" />
+                  <mssgle:LineSegment
+                    End="5.36111182512496,13.6549709396993" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.36111182512496,13.6549709396993"
+                    Point2="9.36111182512496,13.6549709396993"
+                    Point3="9.36111182512496,17.6549709396993" />
+                  <mssgle:LineSegment
+                    End="9.36111182512496,19.8099418793986" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\DimJogoArbitroTreinador\LookupArbitros"
+          TopLeft="160.694439943052,239.138403197177" />
+        <NodeLayout
+          Size="201.333333333334,42.6666666666667"
+          Id="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos"
+          TopLeft="155.55554860168,327.115007334243" />
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\DimJogoArbitroTreinador\OLE DB Destination"
+          TopLeft="320.277763460246,425.477579295096" />
+        <NodeLayout
+          Size="170.666666666667,42.6666666666667"
+          Id="Package\DimJogoArbitroTreinador\OLE DB Command"
+          TopLeft="34.0277762566174,424.460036632439" />
+        <EdgeLayout
+          Id="Package\DimJogoArbitroTreinador.Paths[Lookup No Match Output]"
+          TopLeft="288.444437490569,369.781674000909">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="119.16665930301,55.695905294187"
+              Start="0,0"
+              End="119.16665930301,48.195905294187">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5418381479758" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5418381479758"
+                    Point2="0,22.5418381479758"
+                    Point3="4,22.5418381479758" />
+                  <mssgle:LineSegment
+                    End="115.16665930301,22.5418381479758" />
+                  <mssgle:CubicBezierSegment
+                    Point1="115.16665930301,22.5418381479758"
+                    Point2="119.16665930301,22.5418381479758"
+                    Point3="119.16665930301,26.5418381479758" />
+                  <mssgle:LineSegment
+                    End="119.16665930301,48.195905294187" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="3.77694293275487,27.5418381479758,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimJogoArbitroTreinador.Paths[Lookup Match Output]"
+          TopLeft="223.999993046125,369.781674000909">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-104.638883456174,54.67836263153"
+              Start="0,0"
+              End="-104.638883456174,47.17836263153">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.1300074776757" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.1300074776757"
+                    Point2="0,22.1300074776757"
+                    Point3="-4,22.1300074776757" />
+                  <mssgle:LineSegment
+                    End="-100.638883456174,22.1300074776757" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-100.638883456174,22.1300074776757"
+                    Point2="-104.638883456174,22.1300074776757"
+                    Point3="-104.638883456174,26.1300074776757" />
+                  <mssgle:LineSegment
+                    End="-104.638883456174,47.17836263153" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-100.510828446837,27.1300074776757,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="180,42.6666666666667"
+          Id="Package\DimJogoArbitroTreinador\LookupTreinadores 1"
+          TopLeft="334.722207258973,194.401559567712" />
+        <EdgeLayout
+          Id="Package\DimJogoArbitroTreinador.Paths[Lookup Match Output1]"
+          TopLeft="366.65277175833,151.309941879399">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58.0694355006435,43.0916176883137"
+              Start="0,0"
+              End="58.0694355006435,35.5916176883137">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="54.0694355006435,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54.0694355006435,0"
+                    Point2="58.0694355006435,0"
+                    Point3="58.0694355006435,4" />
+                  <mssgle:LineSegment
+                    End="58.0694355006435,35.5916176883137" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="9.87804878189352,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimJogoArbitroTreinador.Paths[Lookup Match Output2]"
+          TopLeft="334.722207258973,215.734892901046">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-98.0277673159211,23.4035102961313"
+              Start="0,0"
+              End="-98.0277673159211,15.9035102961313">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-94.0277673159211,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-94.0277673159211,0"
+                    Point2="-98.0277673159211,0"
+                    Point3="-98.0277673159211,4" />
+                  <mssgle:LineSegment
+                    End="-98.0277673159211,15.9035102961313" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-146.219154034671,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimJogoArbitroTreinador.Paths[Lookup Match Output3]"
+          TopLeft="236.694439943052,281.805069863844">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.5277753252949,45.309937470399"
+              Start="0,0"
+              End="19.5277753252949,37.809937470399">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.6549687351995" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.6549687351995"
+                    Point2="0,22.6549687351995"
+                    Point3="4,22.6549687351995" />
+                  <mssgle:LineSegment
+                    End="15.5277753252949,22.6549687351995" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.5277753252949,22.6549687351995"
+                    Point2="19.5277753252949,22.6549687351995"
+                    Point3="19.5277753252949,26.6549687351995" />
+                  <mssgle:LineSegment
+                    End="19.5277753252949,37.809937470399" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-38.4274990561026,27.6549687351995,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimJogoArbitroTreinador\LookupTreinadores">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Treinadores]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimJogoArbitroTreinador\DsaJogo">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimJogoArbitroTreinador\LookupArbitros">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Arbitros]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimJogoArbitroTreinador\LookupDimJogadoresPos">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_JogoArbTrei]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimJogoArbitroTreinador\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimJogoArbitroTreinador\LookupTreinadores 1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Treinadores]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

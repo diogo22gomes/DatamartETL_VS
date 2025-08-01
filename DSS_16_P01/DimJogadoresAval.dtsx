@@ -1,0 +1,1053 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/12/2024 11:10:36 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-17FIPGFE"
+  DTS:CreatorName="LAPTOP-17FIPGFE\Anjo"
+  DTS:DTSID="{E7EE6729-F102-4355-9471-FF8616F5DD16}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="2070"
+  DTS:ObjectName="DimJogadoresAval"
+  DTS:PackageType="5"
+  DTS:VersionBuild="52"
+  DTS:VersionGUID="{1A3E8095-CF41-40EA-8E23-03178379FDC6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DimJogadoresAvaliacao"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{524C1FC0-E4C6-483E-AFAF-7F7ED455A110}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DimJogadoresAvaliacao"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DimJogadoresAvaliacao\DsaJogadores"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="DsaJogadores"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Jogadores]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT J.ID, J.Nome, J.Epoca, J.DataNasc, J.MaiorValor, J.ValorAtual, J.DataContrato,  JA.DataAvaliacao, JA.Valor
+FROM   Jogadores AS J INNER JOIN
+             JogadoresAvaliacao AS JA ON J.ID = JA.JogadorID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogadoresAvaliacao\DsaJogadores.Connections[OleDbConnection]"
+                  connectionManagerID="{924C3E52-7799-40E9-8FD1-38C396DF1CD6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDSA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[Nome]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[Nome]"
+                      length="50"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[Nome]"
+                      name="Nome"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[Epoca]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[Epoca]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[Epoca]"
+                      name="Epoca"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataNasc]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[DataNasc]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataNasc]"
+                      name="DataNasc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[MaiorValor]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[MaiorValor]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[MaiorValor]"
+                      name="MaiorValor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[ValorAtual]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[ValorAtual]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[ValorAtual]"
+                      name="ValorAtual"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataContrato]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[DataContrato]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataContrato]"
+                      name="DataContrato"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataAvaliacao]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[DataAvaliacao]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataAvaliacao]"
+                      name="DataAvaliacao"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[Valor]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[Valor]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[Valor]"
+                      name="Valor"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[Nome]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nome" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[Epoca]"
+                      dataType="i4"
+                      name="Epoca" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[DataNasc]"
+                      dataType="dbTimeStamp"
+                      name="DataNasc" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[MaiorValor]"
+                      dataType="i4"
+                      name="MaiorValor" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[ValorAtual]"
+                      dataType="i4"
+                      name="ValorAtual" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[DataContrato]"
+                      dataType="dbTimeStamp"
+                      name="DataContrato" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[DataAvaliacao]"
+                      dataType="dbTimeStamp"
+                      name="DataAvaliacao" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].ExternalColumns[Valor]"
+                      dataType="i4"
+                      name="Valor" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[Nome]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[Nome]"
+                      name="Nome" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[Epoca]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[Epoca]"
+                      name="Epoca" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[DataNasc]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[DataNasc]"
+                      name="DataNasc" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[MaiorValor]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[MaiorValor]"
+                      name="MaiorValor" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[ValorAtual]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[ValorAtual]"
+                      name="ValorAtual" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[DataContrato]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[DataContrato]"
+                      name="DataContrato" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[DataAvaliacao]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[DataAvaliacao]"
+                      name="DataAvaliacao" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[Valor]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Error Output].Columns[Valor]"
+                      name="Valor" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookupDimJogadoresAval"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_jogadoresAvaliacao]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_jogadoresAvaliacao]) [refTable]
+where [refTable].[jogadorCode] = ? and [refTable].[DataAvaliacao] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="jogadorKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="jogadorCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Nome" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Epoca" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DataNasc" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MaiorValor" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ValorAtual" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DataContrato" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Valor" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DataAvaliacao" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[ID]};#{Package\DimJogadoresAvaliacao\159:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Inputs[Lookup Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">jogadorCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Inputs[Lookup Input].Columns[DataAvaliacao]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DataAvaliacao"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataAvaliacao]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">DataAvaliacao</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogadoresAvaliacao\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">update dim_jogadoresAvaliacao set Valor= ?, DataAvaliacao = ? where jogadorCode = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogadoresAvaliacao\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimJogadoresAvaliacao\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Command.Inputs[OLE DB Command Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Command.Inputs[OLE DB Command Input].Columns[Valor]"
+                      cachedDataType="i4"
+                      cachedName="Valor"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[Valor]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Command.Inputs[OLE DB Command Input].Columns[DataAvaliacao]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DataAvaliacao"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataAvaliacao]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="dbTimeStamp"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogadoresAvaliacao\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DimJogadoresAvaliacao\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimJogadoresAvaliacao\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DimJogadoresAvaliacao\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresAvaliacao\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresAvaliacao\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimJogadoresAvaliacao\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dim_jogadoresAvaliacao]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{91118077-B772-4219-A651-4D4C3537F586}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-17FIPGFE_MSSQLSERVER01.TransfermarktDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nome]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nome"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nome]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[Nome]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Epoca]"
+                      cachedDataType="i4"
+                      cachedName="Epoca"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Epoca]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[Epoca]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DataNasc]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DataNasc"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DataNasc]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataNasc]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MaiorValor]"
+                      cachedDataType="i4"
+                      cachedName="MaiorValor"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MaiorValor]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[MaiorValor]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ValorAtual]"
+                      cachedDataType="i4"
+                      cachedName="ValorAtual"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ValorAtual]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[ValorAtual]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DataContrato]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DataContrato"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DataContrato]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataContrato]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[jogadorCode]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Valor]"
+                      cachedDataType="i4"
+                      cachedName="Valor"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valor]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[Valor]" />
+                    <inputColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DataAvaliacao]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DataAvaliacao"
+                      externalMetadataColumnId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DataAvaliacao]"
+                      lineageId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output].Columns[DataAvaliacao]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[jogadorKey]"
+                      dataType="i4"
+                      name="jogadorKey" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[jogadorCode]"
+                      dataType="i4"
+                      name="jogadorCode" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nome]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nome" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Epoca]"
+                      dataType="i4"
+                      name="Epoca" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DataNasc]"
+                      dataType="dbTimeStamp"
+                      name="DataNasc" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MaiorValor]"
+                      dataType="i4"
+                      name="MaiorValor" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ValorAtual]"
+                      dataType="i4"
+                      name="ValorAtual" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DataContrato]"
+                      dataType="dbTimeStamp"
+                      name="DataContrato" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valor]"
+                      dataType="i4"
+                      name="Valor" />
+                    <externalMetadataColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DataAvaliacao]"
+                      dataType="dbTimeStamp"
+                      name="DataAvaliacao" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresAvaliacao\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimJogadoresAvaliacao\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimJogadoresAvaliacao\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DimJogadoresAvaliacao.Paths[Lookup Match Output]"
+              endId="Package\DimJogadoresAvaliacao\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DimJogadoresAvaliacao.Paths[Lookup No Match Output]"
+              endId="Package\DimJogadoresAvaliacao\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DimJogadoresAvaliacao.Paths[OLE DB Source Output]"
+              endId="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\DimJogadoresAvaliacao\DsaJogadores.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tarefa Executar SQL"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarefa Executar SQL"
+      DTS:DTSID="{CEBD55DC-C785-451B-821B-CBFEA7F890A3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarefa Executar SQL"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{924C3E52-7799-40E9-8FD1-38C396DF1CD6}"
+          SQLTask:SqlStatementSource="SELECT J.ID, J.Nome, J.Epoca, J.PaisID, J.DataNasc, J.MaiorValor, J.ValorAtual, J.DataContrato, J.PosicaoJogadorID, JA.JogadorID, JA.DataAvaliacao, JA.Valor&#xA;FROM   Jogadores AS J INNER JOIN&#xA;             JogadoresAvaliacao AS JA ON J.ID = JA.JogadorID" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restrição]"
+      DTS:CreationName=""
+      DTS:DTSID="{9A4AC088-7D54-4F82-93A3-7B206F7BDAF2}"
+      DTS:From="Package\Tarefa Executar SQL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restrição"
+      DTS:To="Package\DimJogadoresAvaliacao" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="194.666666666667,42.6666666666667"
+          Id="Package\DimJogadoresAvaliacao"
+          TopLeft="241.874989187345,119.052630271773" />
+        <NodeLayout
+          Size="180,42.6666666666667"
+          Id="Package\Tarefa Executar SQL"
+          TopLeft="257.499988488853,32.8421049025581" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restrição]"
+          TopLeft="347.499988488853,75.5087715692247">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8.29166596817481,43.5438587025482"
+              Start="0,0"
+              End="-8.29166596817481,36.0438587025482">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.7719293512741" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.7719293512741"
+                    Point2="0,21.7719293512741"
+                    Point3="-4,21.7719293512741" />
+                  <mssgle:LineSegment
+                    End="-4.29166596817481,21.7719293512741" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.29166596817481,21.7719293512741"
+                    Point2="-8.29166596817481,21.7719293512741"
+                    Point3="-8.29166596817481,25.7719293512741" />
+                  <mssgle:LineSegment
+                    End="-8.29166596817481,36.0438587025482" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DimJogadoresAvaliacao">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\DimJogadoresAvaliacao\OLE DB Destination"
+          TopLeft="317.083321840813,352.690057930284" />
+        <NodeLayout
+          Size="170.666666666667,42.6666666666667"
+          Id="Package\DimJogadoresAvaliacao\OLE DB Command"
+          TopLeft="60,339.508772711124" />
+        <NodeLayout
+          Size="148,42.6666666666667"
+          Id="Package\DimJogadoresAvaliacao\DsaJogadores"
+          TopLeft="218.124992931262,163.999998858101" />
+        <NodeLayout
+          Size="204,42.6666666666667"
+          Id="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval"
+          TopLeft="190.624994160608,255.754386070087" />
+        <EdgeLayout
+          Id="Package\DimJogadoresAvaliacao.Paths[Lookup No Match Output]"
+          TopLeft="325.291660827275,298.421052736754">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="79.1249943468717,54.2690051935303"
+              Start="0,0"
+              End="79.1249943468717,46.7690051935303">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.9609982106115" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.9609982106115"
+                    Point2="0,21.9609982106115"
+                    Point3="4,21.9609982106115" />
+                  <mssgle:LineSegment
+                    End="75.1249943468717,21.9609982106115" />
+                  <mssgle:CubicBezierSegment
+                    Point1="75.1249943468717,21.9609982106115"
+                    Point2="79.1249943468717,21.9609982106115"
+                    Point3="79.1249943468717,25.9609982106115" />
+                  <mssgle:LineSegment
+                    End="79.1249943468717,46.7690051935303" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-16.2438895453141,26.9609982106115,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimJogadoresAvaliacao.Paths[Lookup Match Output]"
+          TopLeft="259.958327493941,298.421052736754">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-114.624994160608,41.0877199743703"
+              Start="0,0"
+              End="-114.624994160608,33.5877199743703">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.626937265893" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.626937265893"
+                    Point2="0,16.626937265893"
+                    Point3="-4,16.626937265893" />
+                  <mssgle:LineSegment
+                    End="-110.624994160608,16.626937265893" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-110.624994160608,16.626937265893"
+                    Point2="-114.624994160608,16.626937265893"
+                    Point3="-114.624994160608,20.626937265893" />
+                  <mssgle:LineSegment
+                    End="-114.624994160608,33.5877199743703" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-105.503883799054,21.626937265893,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimJogadoresAvaliacao.Paths[OLE DB Source Output]"
+          TopLeft="292.374993545935,206.666665524767">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.0877205453198"
+              Start="0,0"
+              End="0,41.5877205453198">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5877205453198" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimJogadoresAvaliacao\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimJogadoresAvaliacao\DsaJogadores">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimJogadoresAvaliacao\LookupDimJogadoresAval">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dim_jogadoresAvaliacao]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

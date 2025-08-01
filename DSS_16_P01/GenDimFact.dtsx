@@ -1,0 +1,414 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/15/2024 11:33:13 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-17FIPGFE"
+  DTS:CreatorName="LAPTOP-17FIPGFE\Anjo"
+  DTS:DTSID="{82406A5A-FB54-49AA-9205-087F15C12648}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="2070"
+  DTS:ObjectName="GenDimFact"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{AF530B72-0ECE-42CE-A78C-9FBABA2367C8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Dim Date"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{CB639A17-5D26-4AFA-9C17-5C69CDFA6362}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dim Date"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>DimDate.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Dim JogoArbTrei"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{044e08c1-9186-4b25-b105-cab5eac1be27}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dim JogoArbTrei"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>DimJogoArbTrei.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Dim JogPais"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{7674c57c-c0db-4c95-bfab-10cce3d431da}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dim JogPais"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>DimJogadoresPais.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Dim JogPos"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{7885d9af-fa99-410b-a409-a5ca821d156b}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dim JogPos"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>DimJogadoresPos.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DimJogAval"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{afd1cd09-470b-4a59-a736-4410baedd9bf}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DimJogAval"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>DimJogadoresAval.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Fct Fichas Jogo"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{7161027a-4e1c-4d47-8373-ade37cf7a1c4}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Fct Fichas Jogo"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>FctFichasJogo.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tarefa Executar SQL"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarefa Executar SQL"
+      DTS:DTSID="{6111F36B-380D-4712-BCEE-EB01ED50F04C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarefa Executar SQL"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{91118077-B772-4219-A651-4D4C3537F586}"
+          SQLTask:SqlStatementSource="USE [TransfermarktDW]&#xA;GO&#xA;&#xA;truncate table [dbo].[dim_date]&#xA;GO&#xA;truncate table [dbo].[dim_jogadoresAvaliacao]&#xA;GO&#xA;truncate table [dbo].[dim_jogadoresPaises]&#xA;GO&#xA;truncate table [dbo].[dim_jogadoresPosicao]&#xA;GO&#xA;truncate table [dbo].[dim_JogoArbTrei]&#xA;GO&#xA;truncate table [dbo].[fact_fichasJogo]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restrição]"
+      DTS:CreationName=""
+      DTS:DTSID="{06760628-F419-4ED8-8534-E4391ACBEB67}"
+      DTS:From="Package\Tarefa Executar SQL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restrição"
+      DTS:To="Package\Dim Date" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restrição 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{C0054527-9A16-4A7B-9081-0BCF8E3E567B}"
+      DTS:From="Package\Dim Date"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restrição 1"
+      DTS:To="Package\DimJogAval" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restrição 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{2676A7EC-B078-4A22-8F03-12AD22C60B60}"
+      DTS:From="Package\DimJogAval"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restrição 2"
+      DTS:To="Package\Dim JogPais" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restrição 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{BA88B995-0511-4C99-B69B-9D173F90E753}"
+      DTS:From="Package\Dim JogPais"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restrição 3"
+      DTS:To="Package\Dim JogPos" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restrição 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{F1DBF983-C793-4A36-91C5-C6DBE50B5F40}"
+      DTS:From="Package\Dim JogPos"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restrição 4"
+      DTS:To="Package\Dim JogoArbTrei" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restrição 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{5EFA6467-0E92-4733-B59B-012912A5C67C}"
+      DTS:From="Package\Dim JogoArbTrei"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restrição 5"
+      DTS:To="Package\Fct Fichas Jogo" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="124,42.6666666666667"
+          Id="Package\Dim Date"
+          TopLeft="170.624992372468,117.684209234166" />
+        <NodeLayout
+          Size="180,42.6666666666667"
+          Id="Package\Tarefa Executar SQL"
+          TopLeft="188.749991562218,34.894736458968" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restrição]"
+          TopLeft="278.749991562218,77.5614031256346">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-46.1249991897493,40.1228061085318"
+              Start="0,0"
+              End="-46.1249991897493,32.6228061085318">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.0614030542659" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.0614030542659"
+                    Point2="0,20.0614030542659"
+                    Point3="-4,20.0614030542659" />
+                  <mssgle:LineSegment
+                    End="-42.1249991897493,20.0614030542659" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-42.1249991897493,20.0614030542659"
+                    Point2="-46.1249991897493,20.0614030542659"
+                    Point3="-46.1249991897493,24.0614030542659" />
+                  <mssgle:LineSegment
+                    End="-46.1249991897493,32.6228061085318" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="137.333333333334,42.6666666666667"
+          Id="Package\DimJogAval"
+          TopLeft="173.12499226071,191.614034111095" />
+        <NodeLayout
+          Size="140,42.6666666666667"
+          Id="Package\Dim JogPais"
+          TopLeft="171.874992316589,258.70175379999" />
+        <NodeLayout
+          Size="137.333333333334,42.6666666666667"
+          Id="Package\Dim JogPos"
+          TopLeft="170.624992372468,318.947368300853" />
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Dim JogoArbTrei"
+          TopLeft="167.499992512167,381.929824876928" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Fct Fichas Jogo"
+          TopLeft="173.12499226071,449.894736316231" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restrição 1]"
+          TopLeft="232.624992372468,160.350875900833">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.16666655490803,31.2631582102617"
+              Start="0,0"
+              End="9.16666655490803,23.7631582102617">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.6315791051308" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.6315791051308"
+                    Point2="0,15.6315791051308"
+                    Point3="4,15.6315791051308" />
+                  <mssgle:LineSegment
+                    End="5.16666655490803,15.6315791051308" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.16666655490803,15.6315791051308"
+                    Point2="9.16666655490803,15.6315791051308"
+                    Point3="9.16666655490803,19.6315791051308" />
+                  <mssgle:LineSegment
+                    End="9.16666655490803,23.7631582102617" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restrição 2]"
+          TopLeft="241.833325621983,234.280700777761">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.4210530222288"
+              Start="0,0"
+              End="0,16.9210530222288">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.9210530222288" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restrição 3]"
+          TopLeft="311.874992316589,280.035087133324">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-3.91666661078733,60.2456145008625"
+              Start="0,0"
+              End="3.58333338921267,60.2456145008625">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.5,0"
+                    Point2="22.5,0"
+                    Point3="22.5,4" />
+                  <mssgle:LineSegment
+                    End="22.5,56.2456145008625" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22.5,56.2456145008625"
+                    Point2="22.5,60.2456145008625"
+                    Point3="18.5,60.2456145008625" />
+                  <mssgle:LineSegment
+                    End="3.58333338921267,60.2456145008625" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restrição 4]"
+          TopLeft="170.624992372468,340.280701634186">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-3.12499986030161,62.9824565760757"
+              Start="0,0"
+              End="-10.6249998603016,62.9824565760757">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-21.6249998603016,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-21.6249998603016,0"
+                    Point2="-25.6249998603016,0"
+                    Point3="-25.6249998603016,4" />
+                  <mssgle:LineSegment
+                    End="-25.6249998603016,58.9824565760757" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-25.6249998603016,58.9824565760757"
+                    Point2="-25.6249998603016,62.9824565760757"
+                    Point3="-21.6249998603016,62.9824565760757" />
+                  <mssgle:LineSegment
+                    End="-10.6249998603016,62.9824565760757" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restrição 5]"
+          TopLeft="248.979159053105,424.596491543595">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.2982447726355"
+              Start="0,0"
+              End="0,17.7982447726355">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.7982447726355" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
